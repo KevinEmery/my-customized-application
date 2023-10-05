@@ -50,7 +50,7 @@ export function App() {
       {result && !result.error &&
         <>
           <h1>Demo Application</h1>
-          <h2>$$GREETING$$</h2>
+          <h2>Hello from Prototype Share-out!</h2>
           Server time is: {result.now}<br />
           Service: {result.service}<br />
           Revision: {result.revision}<br />

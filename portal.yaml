@@ -13,52 +13,52 @@
 # limitations under the License.
 
 views:
-  - name: solutions-platform-$$APPLICATION_NAME$$
+  - name: solutions-platform-kevinemery-bc-test-002
     enabled: True
     type: application
     application:
-      name: Go & JavaScript Web App ($$APPLICATION_NAME$$)
+      name: Go & JavaScript Web App (kevinemery-bc-test-002)
       desc: >
         A three-tier web application with backend implemented in <a href="https://go.dev/">golang</a>
         and a web UI client implemented in JavaScript.
-        <p>Owner: $$OWNER$$
-        <p>Criticality: $$CRITICALITY$$
+        <p>Owner: kevinemery@google.com
+        <p>Criticality: MISSION_CRITICAL
     sdlc:
       - type: source
         attrs:
           provider: GitHub
-          organization: $$GITHUB_ORGANIZATION$$
-          repo: $$GITHUB_REPOSITORY$$
+          organization: KevinEmery
+          repo: specialized-application
       - type: build
         attrs:
           provider: Google Cloud Build
-          project: $$PROJECT_ID$$
-          region: $$REGION$$
+          project: kevinemery-bc-test-002
+          region: us-west1
           tag: one-time-setup
       - type: registry
         attrs:
           provider: Google Artifact Registry
-          project: $$PROJECT_ID$$
+          project: kevinemery-bc-test-002
           region: us
           repo: demo-application
           type: Docker
       - type: deploy
         attrs:
           provider: Google Cloud Build
-          project: $$PROJECT_ID$$
-          region: $$REGION$$
+          project: kevinemery-bc-test-002
+          region: us-west1
           tag: build-and-deploy
       - type: service
         attrs:
           provider: Google Cloud Run
-          project: $$PROJECT_ID$$
-          region: $$REGION$$
+          project: kevinemery-bc-test-002
+          region: us-west1
           service: demo-application-backend
       - type: service
         attrs:
           provider: Google Service Directory
-          project: $$PROJECT_ID$$
-          region: $$REGION$$
+          project: kevinemery-bc-test-002
+          region: us-west1
           includes:
-            - namespace: $$APPLICATION_NAME$$
-              service: $$APPLICATION_NAME$$
+            - namespace: kevinemery-bc-test-002
+              service: kevinemery-bc-test-002

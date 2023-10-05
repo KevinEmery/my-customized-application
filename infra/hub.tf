@@ -21,19 +21,19 @@ resource "google_service_directory_namespace" "apphub" {
 
   provider     = google-beta
   project      = var.project
-  namespace_id = "$$APPLICATION_NAME$$"
-  location     = "$$REGION$$"
+  namespace_id = "kevinemery-bc-test-002"
+  location     = "us-west1"
 }
 
 resource "google_service_directory_service" "name" {
   provider   = google-beta
-  service_id = "$$APPLICATION_NAME$$"
+  service_id = "kevinemery-bc-test-002"
   namespace  = google_service_directory_namespace.apphub.id
 
   metadata = {
-    criticality = "$$CRITICALITY$$"
-    location    = "$$REGION$$"
-    owner       = "$$OWNER$$"
+    criticality = "MISSION_CRITICAL"
+    location    = "us-west1"
+    owner       = "kevinemery@google.com"
     uri         = google_cloud_run_v2_service.backend.uri
   }
 }
